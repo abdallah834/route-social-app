@@ -34,82 +34,84 @@ export default function PostCard({ postData }) {
     }
   );
   return (
-    <Card className="dark:bg-white my-4 text-black">
-      {/* card header */}
-      <div className="flex items-center">
-        <Link to={"/"}>
-          <img
-            src={`${postData?.user?.photo}`}
-            alt="user's avatar"
-            className="w-[40px] h-[38px] rounded-[50%] me-3"
-          />
-        </Link>
-        <div>
-          <span className="font-bold block text-black">{`${postData?.user?.name}`}</span>
-          <span className="text-gray-600/70 font-bold text-sm">{`${
-            relativeFormattedTime === "2 days ago"
-              ? formattedTime
-              : relativeFormattedTime
-          }`}</span>
-        </div>
-      </div>
-      {/* card content */}
-      <div>
-        <span className="mb-4 block text-black">{`${
-          postData?.body ? postData?.body : ""
-        }`}</span>
-        {postData?.image ? (
-          <div className="w-full flex flex-row justify-center">
-            <img
-              src={`${postData?.image}`}
-              alt="post image"
-              className="rounded-xl"
-            />
-          </div>
-        ) : null}
-        {id ? null : (
-          <span className="flex justify-end">
-            <Link
-              to={"/posts/" + postData?.id}
-              className="text-end underline text-cyan-500 p-2 font-medium"
-            >
-              see post details
+    <>
+      {postData?.body && (
+        <Card className="dark:bg-white my-4 text-black">
+          {/* card header */}
+          <div className="flex items-center">
+            <Link to={"/"}>
+              <img
+                src={`${postData?.user?.photo}`}
+                alt="user's avatar"
+                className="w-[40px] h-[38px] rounded-[50%] me-3"
+              />
             </Link>
-          </span>
-        )}
-      </div>
-      {/* card comment */}
-      <div className="flex items-center gap-1.5">
-        <Icon
-          icon="mingcute:comment-fill"
-          className="size-8 text-gray-500
+            <div>
+              <span className="font-bold block text-black">{`${postData?.user?.name}`}</span>
+              <span className="text-gray-600/70 font-bold text-sm">{`${
+                relativeFormattedTime === "2 days ago"
+                  ? formattedTime
+                  : relativeFormattedTime
+              }`}</span>
+            </div>
+          </div>
+          {/* card content */}
+          <span className="mb-4 block text-black wrap-break-word">{`${postData?.body}`}</span>
+          <div className="text-wrap w-full">
+            {postData?.image ? (
+              <div className="w-full flex flex-row justify-center">
+                <img
+                  src={`${postData?.image}`}
+                  alt="post image"
+                  className="rounded-xl"
+                />
+              </div>
+            ) : null}
+            {id ? null : (
+              <span className="flex justify-end">
+                <Link
+                  to={"/posts/" + postData?.id}
+                  className="text-end underline text-cyan-500 p-2 font-medium"
+                >
+                  see post details
+                </Link>
+              </span>
+            )}
+          </div>
+          {/* card comment */}
+          <div className="flex items-center gap-1.5">
+            <Icon
+              icon="mingcute:comment-fill"
+              className="size-8 text-gray-500
         "
-        />
-        <span>{`${postData?.comments?.length} Comment${
-          postData?.comments?.length > 1 ? `s` : ``
-        }`}</span>
-      </div>
-
-      {postData?.comments?.length ? (
-        id ? (
-          postData.comments.map((c) => (
-            <PostComment
-              key={c?._id}
-              comment={c}
-              postCreatorId={postData?.user?._id}
             />
-          ))
-        ) : (
-          <PostComment
-            comment={postData.comments[postData.comments.length - 1]}
-            postCreatorId={postData?.user?._id}
-          />
-        )
-      ) : null}
+            <span>{`${postData?.comments?.length} Comment${
+              postData?.comments?.length > 1 ? `s` : ``
+            }`}</span>
+          </div>
 
-      <div>
-        <CreateComment postId={postData?.id} />
-      </div>
-    </Card>
+          {postData?.comments?.length ? (
+            id ? (
+              postData.comments.map((c) => (
+                <PostComment
+                  key={c?._id}
+                  comment={c}
+                  postCreatorId={postData?.user?._id}
+                />
+              ))
+            ) : (
+              <PostComment
+                comment={postData.comments[postData.comments.length - 1]}
+                postCreatorId={postData?.user?._id}
+              />
+            )
+          ) : null}
+
+          <div>
+            <CreateComment postId={postData?.id} />
+          </div>
+        </Card>
+      )}
+    </>
   );
 }

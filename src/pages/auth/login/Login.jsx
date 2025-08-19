@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="form-container flex justify-center items-center min-h-[80vh]">
+      <div className="form-container flex justify-center items-center min-h-[80vh] mx-4">
         <form
           onSubmit={handleSubmit(createUser)}
           className="flex flex-col gap-4 w-xl"
