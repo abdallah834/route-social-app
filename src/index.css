@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: #d1d5db;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #1f2937;
+  }
+}
