@@ -80,10 +80,10 @@ export default function Register() {
 
   return (
     <>
-      <div className="form-container min-w-md py-12 flex justify-center items-center min-h-[80vh]">
+      <div className="form-container py-12 flex justify-center items-center min-h-[80vh]">
         <form
           onSubmit={handleSubmit(createUser)}
-          className="flex flex-col gap-4 min-w-lg"
+          className="flex flex-col gap-4 w-xl"
         >
           {/*****************Name*****************/}
 

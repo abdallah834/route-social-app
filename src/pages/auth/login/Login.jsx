@@ -54,10 +54,10 @@ export default function Login() {
 
   return (
     <>
-      <div className="form-container min-w-md flex justify-center items-center min-h-[80vh]">
+      <div className="form-container flex justify-center items-center min-h-[80vh]">
         <form
           onSubmit={handleSubmit(createUser)}
-          className="flex flex-col gap-4 min-w-lg"
+          className="flex flex-col gap-4 w-xl"
         >
           {/*****************Email*****************/}
           <div>
