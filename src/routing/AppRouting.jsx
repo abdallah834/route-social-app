@@ -7,6 +7,7 @@ import ProtectedRoutes from "./ProtectedRoutes.jsx";
 import AuthProtection from "./AuthProtection.jsx";
 import PostDetails from "../pages/postDetails/PostDetails.jsx";
 import UserProfile from "../pages/userProfile/UserProfile.jsx";
+import NotFound from "../components/Shared/NotFound.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
         children: [{}],
       },
       { path: "user-profile", element: <UserProfile /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
