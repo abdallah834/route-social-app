@@ -21,15 +21,15 @@ export default function Register() {
   const schema = z.object({
     name: z
       .string("name must be a letter")
-      .min(3, "name must be atleast 3 letters"),
+      .min(3, "name must be at least 3 letters"),
     password: z
       .string()
-      .min(8, "password must be atleast 8 characters")
-      .regex(/^[A-Z][\w]/, "passowrd must start with a capital letter"),
+      .min(8, "password must be at least 8 characters")
+      .regex(/^[A-Z][\w]/, "password must start with a capital letter"),
     rePassword: z
       .string()
-      .min(8, "password must be atleast 8 characters")
-      .regex(/^[A-Z][\w]/, "passowrd must start with a capital letter")
+      .min(8, "password must be at least 8 characters")
+      .regex(/^[A-Z][\w]/, "password must start with a capital letter")
       .refine((value) => value === getValues("password"), {
         error: "make sure passwords match",
       }),
